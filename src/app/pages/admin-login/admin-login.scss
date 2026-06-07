@@ -1,0 +1,18 @@
+.login-section {
+  min-height: calc(100vh - 350px);
+}
+
+.login-card {
+  border-top: 3px solid var(--color-saffron) !important;
+}
+
+.extra-small {
+  font-size: 0.75rem;
+}
+
+.focus-none {
+  &:focus {
+    box-shadow: none;
+    border-color: var(--color-saffron);
+  }
+}

@@ -1,0 +1,490 @@
+<!-- Hero Banner Section -->
+<section class="hero-banner d-flex align-items-center position-relative overflow-hidden">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative text-white hero-content">
+    <div class="row">
+      <div class="col-xl-8 col-lg-10">
+        <span class="text-uppercase tracking-wider fw-bold text-saffron mb-3 d-inline-block"
+          >The Ultimate Himalayan Experience</span
+        >
+        <h1 class="hero-title display-3 fw-bold mb-4">DISCOVER THE LAND OF HIGH PASSES</h1>
+        <p class="hero-subtitle lead mb-5 opacity-90 pe-md-5">
+          Embark on customized private journeys and thrilling expeditions across Ladakh, Spiti
+          Valley, and Kashmir. Designed and led by local experts who call the mountains home.
+        </p>
+        <div class="hero-buttons d-flex gap-3 flex-wrap">
+          <a
+            routerLink="/packages"
+            class="btn btn-primary btn-sharp text-uppercase py-3 px-5 fw-bold letter-spacing-1"
+            >Explore Packages</a
+          >
+          <a
+            routerLink="/contact"
+            class="btn btn-outline-white btn-sharp text-uppercase py-3 px-5 fw-bold letter-spacing-1"
+            >Contact Locals</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Packages Section -->
+<section class="search-section py-4 position-relative">
+  <div class="container">
+    <div
+      class="search-wrapper bg-dark-blue p-4 shadow-lg border border-secondary-subtle border-opacity-10"
+    >
+      <form (ngSubmit)="onSearch()" class="row g-3 align-items-end">
+        <!-- Destination -->
+        <div class="col-lg-3 col-md-6">
+          <label
+            for="searchDest"
+            class="form-label text-white-50 text-uppercase small fw-bold tracking-wider"
+            >Destination</label
+          >
+          <select
+            id="searchDest"
+            [(ngModel)]="searchDestination"
+            name="destination"
+            class="form-select bg-dark border-secondary text-white py-2 btn-sharp focus-none"
+          >
+            <option value="">All Destinations</option>
+            <option value="ladakh">Ladakh</option>
+            <option value="spiti">Spiti Valley</option>
+            <option value="kashmir">Kashmir</option>
+          </select>
+        </div>
+        <!-- Duration -->
+        <div class="col-lg-3 col-md-6">
+          <label
+            for="searchDur"
+            class="form-label text-white-50 text-uppercase small fw-bold tracking-wider"
+            >Duration</label
+          >
+          <select
+            id="searchDur"
+            [(ngModel)]="searchDuration"
+            name="duration"
+            class="form-select bg-dark border-secondary text-white py-2 btn-sharp focus-none"
+          >
+            <option value="">Any Duration</option>
+            <option value="short">1 - 6 Days</option>
+            <option value="medium">7 - 9 Days</option>
+            <option value="long">10+ Days</option>
+          </select>
+        </div>
+        <!-- Difficulty -->
+        <div class="col-lg-3 col-md-6">
+          <label
+            for="searchDiff"
+            class="form-label text-white-50 text-uppercase small fw-bold tracking-wider"
+            >Difficulty</label
+          >
+          <select
+            id="searchDiff"
+            [(ngModel)]="searchDifficulty"
+            name="difficulty"
+            class="form-select bg-dark border-secondary text-white py-2 btn-sharp focus-none"
+          >
+            <option value="">Any Difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Challenging">Challenging</option>
+          </select>
+        </div>
+        <!-- Search CTA -->
+        <div class="col-lg-3 col-md-6">
+          <button
+            type="submit"
+            class="btn btn-primary w-100 text-uppercase py-2.5 fw-bold btn-sharp tracking-wider"
+          >
+            <i class="bi bi-search me-2"></i>Find Packages
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Destinations Section -->
+<section class="destinations-section py-5 bg-light-gray">
+  <div class="container py-3">
+    <div class="text-center mb-5">
+      <span class="text-saffron text-uppercase tracking-wider fw-bold small">Where to Go?</span>
+      <h2 class="section-title display-6 fw-extrabold text-charcoal mt-1 mb-3">
+        POPULAR DESTINATIONS
+      </h2>
+      <div class="title-underline mx-auto"></div>
+      <p class="text-muted mt-3 max-w-2xl mx-auto">
+        Choose your terrain: the moonscapes of Ladakh, the remote monasteries of Spiti, or the lush
+        alpine lakes of Kashmir.
+      </p>
+    </div>
+
+    <div class="row g-4 mobile-horizontal-scroll">
+      <!-- Ladakh -->
+      <div class="col-lg-4 col-md-6">
+        <div class="destination-card position-relative overflow-hidden group shadow-sm">
+          <img
+            src="Ladakh/kang-yaze-green-field.jpg"
+            alt="Ladakh Mountains"
+            class="w-100 h-100 object-fit-cover dest-img"
+            loading="lazy"
+          />
+          <div class="dest-overlay d-flex flex-column justify-content-end p-4">
+            <h3 class="dest-title text-white fw-bold mb-1">LADAKH</h3>
+            <p class="dest-subtitle text-white-50 small mb-3">Land of Monasteries & High Passes</p>
+            <a
+              routerLink="/destinations/ladakh"
+              class="btn btn-outline-light btn-sharp btn-sm text-uppercase py-2"
+              >Explore Packages</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Spiti Valley -->
+      <div class="col-lg-4 col-md-6">
+        <div class="destination-card position-relative overflow-hidden group shadow-sm">
+          <img
+            src="/extra/spiti-tour.jpeg"
+            alt="Spiti Valley Key Monastery"
+            class="w-100 h-100 object-fit-cover dest-img"
+            loading="lazy"
+          />
+          <div class="dest-overlay d-flex flex-column justify-content-end p-4">
+            <h3 class="dest-title text-white fw-bold mb-1">SPITI VALLEY</h3>
+            <p class="dest-subtitle text-white-50 small mb-3">The Mystical Middle Land</p>
+            <a
+              routerLink="/destinations/spiti"
+              class="btn btn-outline-light btn-sharp btn-sm text-uppercase py-2"
+              >Explore Packages</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Kashmir -->
+      <div class="col-lg-4 col-md-6 mx-md-auto">
+        <div class="destination-card position-relative overflow-hidden group shadow-sm">
+          <img
+            src="/extra/kashmir.jpeg"
+            alt="Kashmir Dal Lake"
+            class="w-100 h-100 object-fit-cover dest-img"
+            loading="lazy"
+          />
+          <div class="dest-overlay d-flex flex-column justify-content-end p-4">
+            <h3 class="dest-title text-white fw-bold mb-1">KASHMIR</h3>
+            <p class="dest-subtitle text-white-50 small mb-3">Paradise on Earth</p>
+            <a
+              routerLink="/destinations/kashmir"
+              class="btn btn-outline-light btn-sharp btn-sm text-uppercase py-2"
+              >Explore Packages</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Packages Section -->
+<section class="packages-section py-5">
+  <div class="container py-3">
+    <div class="d-md-flex align-items-end justify-content-between mb-5">
+      <div>
+        <span class="text-saffron text-uppercase tracking-wider fw-bold small"
+          >Handpicked Expeditions</span
+        >
+        <h2 class="section-title display-6 fw-extrabold text-charcoal mt-1 mb-0">
+          FEATURED PACKAGES
+        </h2>
+        <div class="title-underline mt-2"></div>
+      </div>
+      <a
+        routerLink="/packages"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2.5 px-4 mt-3 mt-md-0 fw-semibold tracking-wider"
+        >View All Packages <i class="bi bi-arrow-right ms-1"></i
+      ></a>
+    </div>
+
+    <div class="row g-4 mobile-horizontal-scroll">
+      @for (pkg of featuredPackages; track pkg) {
+        <div class="col-lg-4 col-md-6">
+          <div class="package-card border-0 shadow-sm bg-white overflow-hidden">
+            <div class="card-img-wrapper position-relative">
+              <img [src]="pkg.image" [alt]="pkg.title" class="w-100 package-img" loading="lazy" />
+              <div class="package-tag text-uppercase fw-bold">{{ pkg.category }}</div>
+              <div class="package-price">
+                {{ pkg.price | currency: 'INR' : 'symbol' : '1.0-0' }}
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-clock me-1 text-saffron"></i>{{ pkg.duration }}</span>
+                <span><i class="bi bi-bar-chart me-1 text-saffron"></i>{{ pkg.difficulty }}</span>
+              </div>
+              <h4 class="card-title fw-bold text-charcoal mb-2">{{ pkg.title }}</h4>
+              <p class="text-muted small mb-4 line-clamp-3">{{ pkg.description }}</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <span class="small text-muted"
+                  ><i class="bi bi-geo-alt-fill text-saffron me-1"></i>{{ pkg.location }}</span
+                >
+                <a
+                  [routerLink]="['/packages', pkg.slug]"
+                  class="btn btn-link text-saffron p-0 text-decoration-none fw-bold text-uppercase small"
+                  >Details <i class="bi bi-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us & Stats Section -->
+<section class="why-choose-us py-5 bg-dark-blue text-white position-relative">
+  <div class="container py-3">
+    <div class="row g-5 align-items-center">
+      <!-- Statistics Description -->
+      <div class="col-lg-6">
+        <span class="text-saffron text-uppercase tracking-wider fw-bold small"
+          >Why Golo Holidays?</span
+        >
+        <h2 class="display-6 fw-bold text-white mt-1 mb-4">
+          LOCAL EXPERTS WHO UNDERSTAND HIGH ALTITUDE
+        </h2>
+        <p class="text-white-50 mb-4">
+          Traveling in Ladakh, Spiti, and Kashmir is not like visiting flat-land beach destinations.
+          High altitude terrain requires serious logistical preparedness, medical contingencies, and
+          local network support.
+        </p>
+        <p class="text-white-50 mb-5">
+          Golo Holidays was founded in Leh by native mountain guides. We ensure your itinerary
+          balances acclimatization, use luxury vehicles suited for rough roads, and employ certified
+          local drivers.
+        </p>
+
+        <!-- Stats Counters Grid -->
+        <div class="row g-4 text-center">
+          <div class="col-6 col-sm-3">
+            <div class="stat-box p-3 border border-secondary border-opacity-20 bg-dark-deep">
+              <h3 class="display-6 fw-bold text-saffron mb-1">1.2K+</h3>
+              <p class="text-white-50 small text-uppercase mb-0 tracking-wider">Travelers</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="stat-box p-3 border border-secondary border-opacity-20 bg-dark-deep">
+              <h3 class="display-6 fw-bold text-saffron mb-1">450+</h3>
+              <p class="text-white-50 small text-uppercase mb-0 tracking-wider">Tours</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="stat-box p-3 border border-secondary border-opacity-20 bg-dark-deep">
+              <h3 class="display-6 fw-bold text-saffron mb-1">8+</h3>
+              <p class="text-white-50 small text-uppercase mb-0 tracking-wider">Years</p>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="stat-box p-3 border border-secondary border-opacity-20 bg-dark-deep">
+              <h3 class="display-6 fw-bold text-saffron mb-1">100%</h3>
+              <p class="text-white-50 small text-uppercase mb-0 tracking-wider">Local</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="col-lg-6">
+        <div class="row g-4">
+          <!-- Feature 1 -->
+          <div class="col-md-6">
+            <div class="feature-item p-4 bg-dark border border-secondary border-opacity-10 h-100">
+              <div class="feature-icon mb-3 fs-2 text-saffron">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Oxygen Backup & AMS Care</h5>
+              <p class="text-white-50 small mb-0">
+                Every vehicle carries emergency oxygen cylinders, and our guides are trained in
+                high-altitude sickness triage.
+              </p>
+            </div>
+          </div>
+          <!-- Feature 2 -->
+          <div class="col-md-6">
+            <div class="feature-item p-4 bg-dark border border-secondary border-opacity-10 h-100">
+              <div class="feature-icon mb-3 fs-2 text-saffron">
+                <i class="bi bi-car-front-fill"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Private Premium Fleet</h5>
+              <p class="text-white-50 small mb-0">
+                We operate well-maintained 4x4 SUVs, customized Force Travellers, and premium Royal
+                Enfield bikes.
+              </p>
+            </div>
+          </div>
+          <!-- Feature 3 -->
+          <div class="col-md-6">
+            <div class="feature-item p-4 bg-dark border border-secondary border-opacity-10 h-100">
+              <div class="feature-icon mb-3 fs-2 text-saffron">
+                <i class="bi bi-award-fill"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Certified Homestays</h5>
+              <p class="text-white-50 small mb-0">
+                Authentic local stays and luxury Swiss-tented camps selected for cleanliness,
+                comfort, and view quality.
+              </p>
+            </div>
+          </div>
+          <!-- Feature 4 -->
+          <div class="col-md-6">
+            <div class="feature-item p-4 bg-dark border border-secondary border-opacity-10 h-100">
+              <div class="feature-icon mb-3 fs-2 text-saffron">
+                <i class="bi bi-calendar-event"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Tailormade Itineraries</h5>
+              <p class="text-white-50 small mb-0">
+                Flexible dates, customized photography spots, hiking routes, and monastery stays
+                organized for you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section py-5 bg-light-gray">
+  <div class="container py-3">
+    <div class="text-center mb-5">
+      <span class="text-saffron text-uppercase tracking-wider fw-bold small">Happy Wanderers</span>
+      <h2 class="section-title display-6 fw-extrabold text-charcoal mt-1 mb-3">TESTIMONIALS</h2>
+      <div class="title-underline mx-auto"></div>
+    </div>
+
+    <div class="row g-4 mobile-horizontal-scroll">
+      @for (item of testimonials; track item) {
+        <div class="col-md-4">
+          <div
+            class="testimonial-card p-4 bg-white border border-light-subtle shadow-sm h-100 d-flex flex-column justify-content-between"
+          >
+            <div>
+              <div class="rating-stars mb-3 text-saffron">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                  <i class="bi bi-star-fill me-1"></i>
+                }
+              </div>
+              <p class="testimonial-comment text-muted small italic mb-4">"{{ item.comment }}"</p>
+            </div>
+            <div
+              class="testimonial-user pt-3 border-top d-flex justify-content-between align-items-center"
+            >
+              <div>
+                <h6 class="fw-bold mb-0 text-charcoal">{{ item.name }}</h6>
+                <span class="text-muted small">{{ item.location }}</span>
+              </div>
+              <span
+                class="badge bg-secondary-subtle text-secondary btn-sharp text-uppercase px-2 py-1 small-badge"
+                >{{ item.packageTaken }}</span
+              >
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Recent Blogs Section -->
+<section class="blogs-section py-5">
+  <div class="container py-3">
+    <div class="d-md-flex align-items-end justify-content-between mb-5">
+      <div>
+        <span class="text-saffron text-uppercase tracking-wider fw-bold small"
+          >Mountain Insights</span
+        >
+        <h2 class="section-title display-6 fw-extrabold text-charcoal mt-1 mb-0">
+          RECENT TRAVEL BLOGS
+        </h2>
+        <div class="title-underline mt-2"></div>
+      </div>
+      <a
+        routerLink="/blog"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2.5 px-4 mt-3 mt-md-0 fw-semibold tracking-wider"
+        >All Blog Posts <i class="bi bi-arrow-right ms-1"></i
+      ></a>
+    </div>
+
+    <div class="row g-4 mobile-horizontal-scroll">
+      @for (item of recentBlogs; track item) {
+        <div class="col-lg-4 col-md-6">
+          <div
+            class="blog-card border-0 shadow-sm bg-white overflow-hidden h-100 d-flex flex-column justify-content-between"
+          >
+            <div class="blog-img-wrapper">
+              <img [src]="item.image" [alt]="item.title" class="w-100 blog-img" loading="lazy" />
+              <div class="blog-cat text-uppercase fw-semibold">{{ item.category }}</div>
+            </div>
+            <div class="blog-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+              <div>
+                <div class="text-muted small mb-2">
+                  <i class="bi bi-calendar3 me-2 text-saffron"></i>{{ item.date }}
+                </div>
+                <h4 class="card-title fw-bold text-charcoal fs-5 mb-2">{{ item.title }}</h4>
+                <p class="text-muted small line-clamp-3 mb-4">{{ item.snippet }}</p>
+              </div>
+              <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                <span class="small text-muted"
+                  ><i class="bi bi-person-fill text-saffron me-1"></i>By {{ item.author }}</span
+                >
+                <a
+                  [routerLink]="['/blog', item.slug]"
+                  class="text-saffron fw-bold text-decoration-none text-uppercase small"
+                  >Read Article <i class="bi bi-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section
+  class="cta-section py-5 position-relative bg-dark-blue text-white overflow-hidden text-center"
+>
+  <div class="cta-overlay"></div>
+  <div class="container py-4 position-relative">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <span class="text-saffron text-uppercase tracking-wider fw-bold mb-3 d-inline-block"
+          >Ready to Travel?</span
+        >
+        <h2 class="display-5 fw-extrabold mb-4 text-uppercase" style="color: #fff">
+          PLAN YOUR CUSTOM HIMALAYAN EXPEDITION
+        </h2>
+        <p class="text-white-50 lead mb-5 pe-lg-3">
+          Have a specific trekking route, custom dates, or group budget? Tell our Leh-based vacation
+          planners what you want, and we will send a detailed itinerary and quote within 24 hours.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a
+            routerLink="/contact"
+            class="btn btn-primary btn-sharp text-uppercase py-3 px-5 fw-bold tracking-wider"
+            >Request A Quote</a
+          >
+          <a
+            href="tel:+917051415184"
+            class="btn btn-outline-white btn-sharp text-uppercase text-white py-3 px-5 fw-bold tracking-wider"
+            ><i class="bi bi-telephone-outbound me-2" style="color: #fff"></i>Call +91 7051415184</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

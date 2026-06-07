@@ -1,0 +1,360 @@
+<app-breadcrumbs currentSection="Contact Us"></app-breadcrumbs>
+
+<!-- Banner Header -->
+<section class="contact-header py-5 bg-dark-blue text-white text-center position-relative">
+  <div class="header-overlay"></div>
+  <div class="container position-relative z-3">
+    <h1 class="display-5 fw-extrabold text-uppercase mb-2 text-white">TALK TO HIMALAYAN NATIVES</h1>
+    <p class="lead text-white-50 mb-0">
+      Get in touch to plan your adventure or get immediate travel support.
+    </p>
+  </div>
+</section>
+
+<!-- Main Details & Form Grid -->
+<section class="contact-content py-5 bg-light-gray">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Left side: Office details (Col 5) -->
+      <div class="col-lg-5">
+        <div class="contact-info-panel p-4 bg-white shadow-sm border border-light-subtle h-100">
+          <h3 class="fw-bold text-charcoal mb-4 text-uppercase border-bottom pb-2">OUR OFFICES</h3>
+
+          <!-- India Office -->
+          <div class="office-block mb-4">
+            <h5 class="fw-bold text-saffron mb-2">🇮🇳 India Office (Head Office)</h5>
+            <div class="d-flex align-items-start mb-3">
+              <div class="contact-icon text-saffron fs-4 me-3">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold text-charcoal mb-1">Office Address</h6>
+                <p class="text-muted small mb-0">
+                  Tabasum Complex, Kargil, Opposite Jamia Masjid, Kargil - 194103
+                </p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start mb-3">
+              <div class="contact-icon text-saffron fs-4 me-3">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold text-charcoal mb-1">Phone / WhatsApp</h6>
+                <p class="text-muted small mb-0">
+                  <a href="tel:+917051415184" class="text-decoration-none text-muted"
+                    >+91 7051415184</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Australia Office -->
+          <div class="office-block mb-4 pt-3 border-top border-light-subtle">
+            <h5 class="fw-bold text-saffron mb-2">🇦🇺 Australia Office</h5>
+            <div class="d-flex align-items-start mb-3">
+              <div class="contact-icon text-saffron fs-4 me-3">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold text-charcoal mb-1">Office Address</h6>
+                <p class="text-muted small mb-0">30 Fallon Drive, Dural, NSW 2158</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start mb-3">
+              <div class="contact-icon text-saffron fs-4 me-3">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold text-charcoal mb-1">Phone</h6>
+                <p class="text-muted small mb-0">
+                  <a href="tel:+61469978595" class="text-decoration-none text-muted"
+                    >+61 469978595</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emails -->
+          <div class="office-block mb-4 pt-3 border-top border-light-subtle">
+            <div class="d-flex align-items-start">
+              <div class="contact-icon text-saffron fs-4 me-3">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold text-charcoal mb-1">Email Addresses</h6>
+                <p class="text-muted small mb-0">
+                  General Info:
+                  <a href="mailto:info@goloholidays.com" class="text-decoration-none text-muted"
+                    >info&#64;goloholidays.com</a
+                  >
+                </p>
+                <p class="text-muted small mb-0">
+                  B2B Partner Queries:
+                  <a href="mailto:bookings@goloholidays.com" class="text-decoration-none text-muted"
+                    >bookings&#64;goloholidays.com</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Maps Iframe -->
+          <div class="maps-container border mt-4">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.761019053303!2d76.12658827562657!3d34.561331772969966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e31bf1c65d6489%3A0xbcc0e171b3e8e19c!2sJamia%20Masjid%20Kargil!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              width="100%"
+              height="250"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Inquiry Form (Col 7) -->
+      <div class="col-lg-7">
+        <div
+          class="contact-form-panel p-4 p-md-5 bg-white shadow-sm border border-light-subtle h-100"
+        >
+          <h3 class="fw-bold text-charcoal mb-3 text-uppercase border-bottom pb-2">
+            SEND AN INQUIRY
+          </h3>
+          <p class="text-muted small mb-4">
+            Have questions? Fill out the form below, and we will get back to you within 24 hours.
+          </p>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- Validation Summary Alert -->
+            @if (contactForm.invalid && (contactForm.dirty || contactForm.touched)) {
+              <div
+                class="alert alert-danger border-start border-4 border-danger btn-sharp py-2 mb-4 small d-flex align-items-center"
+                role="alert"
+              >
+                <i class="bi bi-exclamation-octagon-fill me-2 text-danger fs-5"></i>
+                <span
+                  >Please correct the errors highlighted below before sending your message.</span
+                >
+              </div>
+            }
+
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="contactName" class="form-label small fw-bold text-charcoal text-uppercase"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="contactName"
+                formControlName="name"
+                class="form-control bg-light border-secondary-subtle btn-sharp focus-none"
+                [class.is-invalid]="
+                  contactForm.get('name')?.invalid &&
+                  (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)
+                "
+                [class.is-valid]="
+                  contactForm.get('name')?.valid &&
+                  (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)
+                "
+                placeholder="Your name"
+              />
+              @if (
+                contactForm.get('name')?.invalid &&
+                (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)
+              ) {
+                <div class="text-danger small mt-1">
+                  @if (contactForm.get('name')?.errors?.['required']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> Full name is required so we
+                      know who you are.
+                    </span>
+                  }
+                  @if (contactForm.get('name')?.errors?.['minlength']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> Name must be at least 3
+                      characters.
+                    </span>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label
+                for="contactEmail"
+                class="form-label small fw-bold text-charcoal text-uppercase"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="contactEmail"
+                formControlName="email"
+                class="form-control bg-light border-secondary-subtle btn-sharp focus-none"
+                [class.is-invalid]="
+                  contactForm.get('email')?.invalid &&
+                  (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)
+                "
+                [class.is-valid]="
+                  contactForm.get('email')?.valid &&
+                  (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)
+                "
+                placeholder="Your email address"
+              />
+              @if (
+                contactForm.get('email')?.invalid &&
+                (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)
+              ) {
+                <div class="text-danger small mt-1">
+                  @if (contactForm.get('email')?.errors?.['required']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> Email address is required
+                      for replies.
+                    </span>
+                  }
+                  @if (contactForm.get('email')?.errors?.['email']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> Please enter a valid email
+                      address (e.g. name@example.com).
+                    </span>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-3">
+              <label
+                for="contactPhone"
+                class="form-label small fw-bold text-charcoal text-uppercase"
+                >Phone / WhatsApp</label
+              >
+              <input
+                type="tel"
+                id="contactPhone"
+                formControlName="phone"
+                class="form-control bg-light border-secondary-subtle btn-sharp focus-none"
+                [class.is-invalid]="
+                  contactForm.get('phone')?.invalid &&
+                  (contactForm.get('phone')?.dirty || contactForm.get('phone')?.touched)
+                "
+                [class.is-valid]="
+                  contactForm.get('phone')?.valid &&
+                  (contactForm.get('phone')?.dirty || contactForm.get('phone')?.touched)
+                "
+                placeholder="e.g. +91 9876543210"
+              />
+              @if (
+                contactForm.get('phone')?.invalid &&
+                (contactForm.get('phone')?.dirty || contactForm.get('phone')?.touched)
+              ) {
+                <div class="text-danger small mt-1">
+                  @if (contactForm.get('phone')?.errors?.['required']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> A contact phone number is
+                      required.
+                    </span>
+                  }
+                  @if (contactForm.get('phone')?.errors?.['pattern']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> Please enter a valid phone
+                      number (10-18 digits, e.g. +91 9876543210).
+                    </span>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Message -->
+            <div class="mb-4">
+              <label
+                for="contactMessage"
+                class="form-label small fw-bold text-charcoal text-uppercase"
+                >Message Details</label
+              >
+              <textarea
+                id="contactMessage"
+                formControlName="message"
+                rows="5"
+                class="form-control bg-light border-secondary-subtle btn-sharp focus-none"
+                [class.is-invalid]="
+                  contactForm.get('message')?.invalid &&
+                  (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)
+                "
+                [class.is-valid]="
+                  contactForm.get('message')?.valid &&
+                  (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)
+                "
+                placeholder="How can we assist you? Tell us about your group size, travel plans, or questions."
+              ></textarea>
+              @if (
+                contactForm.get('message')?.invalid &&
+                (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)
+              ) {
+                <div class="text-danger small mt-1">
+                  @if (contactForm.get('message')?.errors?.['required']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> Message details cannot be
+                      left blank.
+                    </span>
+                  }
+                  @if (contactForm.get('message')?.errors?.['minlength']) {
+                    <span>
+                      <i class="bi bi-exclamation-circle-fill me-1"></i> Message must be at least 10
+                      characters long so we can assist you.
+                    </span>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="btn btn-primary w-100 btn-sharp text-uppercase py-3 fw-bold tracking-wider"
+              [disabled]="isSubmitting"
+            >
+              @if (isSubmitting) {
+                <span
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              }
+              Send Message
+            </button>
+
+            <!-- Success/Error Notices -->
+            @if (submitSuccess) {
+              <div
+                class="alert alert-success border-start border-4 border-success btn-sharp mt-3 small d-flex align-items-center"
+                role="alert"
+              >
+                <i class="bi bi-check-circle-fill text-success me-2 fs-5"></i>
+                <span
+                  >Thank you! Your message has been sent successfully. We will reply shortly.</span
+                >
+              </div>
+            }
+            @if (submitError) {
+              <div
+                class="alert alert-danger border-start border-4 border-danger btn-sharp mt-3 small d-flex align-items-center"
+                role="alert"
+              >
+                <i class="bi bi-exclamation-triangle-fill text-danger me-2 fs-5"></i>
+                <span
+                  >Failed to submit your message. Please verify your connection and try again, or
+                  call our office.</span
+                >
+              </div>
+            }
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,278 @@
+<app-breadcrumbs currentSection="Admin Dashboard"></app-breadcrumbs>
+
+<section class="py-5 bg-light-gray dashboard-section">
+  <div class="container">
+    <!-- Top Action Bar -->
+    <div
+      class="d-flex justify-content-between align-items-center mb-5 bg-white p-4 border border-light-subtle shadow-sm"
+    >
+      <div>
+        <h1 class="fw-extrabold text-charcoal mb-1 text-uppercase fs-3">PORTAL MANAGEMENT</h1>
+        <p class="text-muted small mb-0">
+          Monitor and update booking requests and contact submissions.
+        </p>
+      </div>
+      <button
+        (click)="onLogout()"
+        class="btn btn-danger btn-sharp text-uppercase py-2.5 px-4 fw-bold tracking-wider"
+      >
+        <i class="bi bi-box-arrow-right me-2"></i>Log Out
+      </button>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="row g-4 mb-5">
+      <!-- Stat 1 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="stat-card p-4 bg-white shadow-sm border border-light-subtle text-center">
+          <span class="text-muted small text-uppercase tracking-wider">Total Inquiries</span>
+          <h2 class="display-6 fw-extrabold text-charcoal mt-1 mb-0">{{ totalCount }}</h2>
+        </div>
+      </div>
+      <!-- Stat 2 -->
+      <div class="col-md-6 col-lg-3">
+        <div
+          class="stat-card p-4 bg-white shadow-sm border border-light-subtle text-center border-top-saffron"
+        >
+          <span class="text-muted small text-uppercase tracking-wider text-saffron"
+            >Pending Requests</span
+          >
+          <h2 class="display-6 fw-extrabold text-saffron mt-1 mb-0">{{ pendingCount }}</h2>
+        </div>
+      </div>
+      <!-- Stat 3 -->
+      <div class="col-md-6 col-lg-3">
+        <div
+          class="stat-card p-4 bg-white shadow-sm border border-light-subtle text-center border-top-success"
+        >
+          <span class="text-muted small text-uppercase tracking-wider text-success"
+            >Processed Inquiries</span
+          >
+          <h2 class="display-6 fw-extrabold text-success mt-1 mb-0">{{ processedCount }}</h2>
+        </div>
+      </div>
+      <!-- Stat 4 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="stat-card p-4 bg-white shadow-sm border border-light-subtle text-center">
+          <span class="text-muted small text-uppercase tracking-wider">Tour Bookings</span>
+          <h2 class="display-6 fw-extrabold text-charcoal mt-1 mb-0">{{ bookingCount }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="bg-white p-4 border border-light-subtle shadow-sm mb-4">
+      <div class="row g-3 align-items-center">
+        <!-- Search -->
+        <div class="col-md-4">
+          <label class="form-label small fw-bold text-charcoal text-uppercase"
+            >Search Clients</label
+          >
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            (input)="applyFiltersAndSearch()"
+            placeholder="Search by name or email..."
+            class="form-control bg-light border-secondary-subtle btn-sharp focus-none"
+          />
+        </div>
+        <!-- Status Filter -->
+        <div class="col-md-4">
+          <label class="form-label small fw-bold text-charcoal text-uppercase">Status</label>
+          <select
+            [(ngModel)]="statusFilter"
+            (change)="applyFiltersAndSearch()"
+            class="form-select bg-light border-secondary-subtle btn-sharp focus-none"
+          >
+            <option value="All">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+        <!-- Type Filter -->
+        <div class="col-md-4">
+          <label class="form-label small fw-bold text-charcoal text-uppercase">Form Type</label>
+          <select
+            [(ngModel)]="typeFilter"
+            (change)="applyFiltersAndSearch()"
+            class="form-select bg-light border-secondary-subtle btn-sharp focus-none"
+          >
+            <option value="All">All Types</option>
+            <option value="booking">Bookings</option>
+            <option value="contact">Contacts</option>
+            <option value="newsletter">Newsletter</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="bg-white border border-light-subtle shadow-sm overflow-x-auto">
+      <table class="table table-hover mb-0 align-middle">
+        <thead class="table-light">
+          <tr>
+            <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal">Date</th>
+            <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal">
+              Client Info
+            </th>
+            <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal">Type</th>
+            <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal">
+              Details / Message
+            </th>
+            <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal">Status</th>
+            <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal text-end">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of filteredInquiries; track item) {
+            <tr class="border-bottom">
+              <td class="p-3 text-muted small">
+                {{ item.createdAt | date: 'mediumDate' }}<br />
+                <span class="extra-small text-black-50">{{
+                  item.createdAt | date: 'shortTime'
+                }}</span>
+              </td>
+              <td class="p-3">
+                <h6 class="fw-bold text-charcoal mb-0">{{ item.name }}</h6>
+                <span class="text-muted small d-block">{{ item.email }}</span>
+                <span class="text-muted small d-block">{{ item.phone }}</span>
+              </td>
+              <td class="p-3">
+                <span
+                  class="badge text-uppercase tracking-wider px-2.5 py-1.5 btn-sharp font-semibold"
+                  [class.bg-primary]="item.type === 'booking'"
+                  [class.bg-info]="item.type === 'contact'"
+                  [class.bg-dark]="item.type === 'newsletter'"
+                >
+                  {{ item.type }}
+                </span>
+              </td>
+              <td class="p-3">
+                @if (item.type === 'booking') {
+                  <div>
+                    <p class="mb-1 small"><strong>Package:</strong> {{ item.packageName }}</p>
+                    <p class="mb-1 small">
+                      <strong>Travel Date:</strong> {{ item.travelDate | date: 'mediumDate' }}
+                    </p>
+                    <p class="mb-1 small"><strong>Guests:</strong> {{ item.guests }}</p>
+                  </div>
+                }
+                <p class="text-muted mb-0 small line-clamp-2 mt-1" [title]="item.message">
+                  {{ item.message }}
+                </p>
+              </td>
+              <td class="p-3">
+                <span
+                  class="badge text-uppercase px-2.5 py-1.5 btn-sharp font-semibold"
+                  [class.bg-warning-subtle]="item.status === 'Pending'"
+                  [class.text-warning-emphasis]="item.status === 'Pending'"
+                  [class.bg-success-subtle]="item.status === 'Contacted'"
+                  [class.text-success-emphasis]="item.status === 'Contacted'"
+                  [class.bg-danger-subtle]="item.status === 'Closed'"
+                  [class.text-danger-emphasis]="item.status === 'Closed'"
+                >
+                  {{ item.status }}
+                </span>
+              </td>
+              <td class="p-3 text-end">
+                <div class="d-inline-flex gap-2">
+                  @if (item.status === 'Pending') {
+                    <button
+                      (click)="updateStatus(item.id, 'Contacted')"
+                      title="Mark Contacted"
+                      class="btn btn-outline-success btn-sm btn-sharp p-2 py-1"
+                    >
+                      <i class="bi bi-check-lg"></i>
+                    </button>
+                  }
+                  @if (item.status === 'Pending') {
+                    <button
+                      (click)="updateStatus(item.id, 'Closed')"
+                      title="Close Inquiry"
+                      class="btn btn-outline-warning btn-sm btn-sharp p-2 py-1"
+                    >
+                      <i class="bi bi-x-lg"></i>
+                    </button>
+                  }
+                  <button
+                    (click)="deleteInquiry(item.id)"
+                    title="Delete Record"
+                    class="btn btn-outline-danger btn-sm btn-sharp p-2 py-1"
+                  >
+                    <i class="bi bi-trash3-fill"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+
+          <!-- Empty State -->
+          @if (filteredInquiries.length === 0) {
+            <tr>
+              <td colspan="6" class="p-5 text-center text-muted">
+                <i class="bi bi-inbox fs-2 mb-2 d-block"></i>
+                No inquiries found matching current search filters.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Newsletter Subscriptions -->
+    <div class="mt-5 bg-white p-4 border border-light-subtle shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="fw-extrabold text-charcoal mb-1 text-uppercase fs-4">NEWSLETTER SUBSCRIPTIONS</h2>
+          <p class="text-muted small mb-0">Total subscribers: {{ newsletterSubscriptions.length }}</p>
+        </div>
+      </div>
+      
+      <div class="border border-light-subtle shadow-sm overflow-x-auto">
+        <table class="table table-hover mb-0 align-middle">
+          <thead class="table-light">
+            <tr>
+              <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal">Subscribed Date</th>
+              <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal">Email Address</th>
+              <th class="p-3 text-uppercase tracking-wider small fw-bold text-charcoal text-end">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (sub of newsletterSubscriptions; track sub.id) {
+              <tr class="border-bottom">
+                <td class="p-3 text-muted small">
+                  {{ sub.subscribedAt | date: 'mediumDate' }}<br />
+                  <span class="extra-small text-black-50">{{ sub.subscribedAt | date: 'shortTime' }}</span>
+                </td>
+                <td class="p-3 font-semibold text-charcoal">
+                  {{ sub.email }}
+                </td>
+                <td class="p-3 text-end">
+                  <button
+                    (click)="deleteNewsletter(sub.id)"
+                    title="Delete Subscription"
+                    class="btn btn-outline-danger btn-sm btn-sharp p-2 py-1"
+                  >
+                    <i class="bi bi-trash3-fill"></i>
+                  </button>
+                </td>
+              </tr>
+            }
+            @if (newsletterSubscriptions.length === 0) {
+              <tr>
+                <td colspan="3" class="p-5 text-center text-muted">
+                  <i class="bi bi-envelope-open fs-2 mb-2 d-block"></i>
+                  No newsletter subscriptions found.
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

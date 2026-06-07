@@ -1,0 +1,147 @@
+@if (destination) {
+  <div>
+    <app-breadcrumbs [currentSection]="destination.name"></app-breadcrumbs>
+    <!-- Big Hero Cover -->
+    <section
+      class="dest-hero position-relative overflow-hidden text-center text-white py-5 d-flex align-items-center"
+    >
+      <div class="hero-overlay"></div>
+      <div class="container position-relative z-3 py-4">
+        <span class="text-saffron text-uppercase tracking-wider fw-bold mb-2 d-inline-block"
+          >Himalayan Destinations</span
+        >
+        <h1 class="display-4 fw-extrabold text-uppercase mb-3">{{ destination.name }}</h1>
+        <p class="lead max-w-2xl mx-auto text-white-50 mb-0">{{ destination.tagline }}</p>
+      </div>
+    </section>
+    <!-- Overview Details -->
+    <section class="dest-overview py-5 bg-white">
+      <div class="container">
+        <div class="row g-5">
+          <!-- Left Side: Desc & Highlights -->
+          <div class="col-lg-8">
+            <h2 class="fw-bold text-charcoal mb-3 text-uppercase">Overview</h2>
+            <p class="text-muted leading-relaxed mb-4">{{ destination.description }}</p>
+            <h3 class="fw-bold text-charcoal mb-3 fs-4 text-uppercase">Key Highlights</h3>
+            <div class="row g-3">
+              @for (highlight of destination.highlights; track highlight) {
+                <div class="col-md-6">
+                  <div class="highlight-item p-3 bg-light border border-light-subtle h-100">
+                    <i class="bi bi-geo-fill text-saffron fs-5 mb-2 d-block"></i>
+                    <p class="mb-0 text-muted small">{{ highlight }}</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+          <!-- Right Side: Destination Specs -->
+          <div class="col-lg-4">
+            <div
+              class="specs-sidebar p-4 bg-dark-blue text-white shadow-sm border border-secondary border-opacity-10"
+            >
+              <h4
+                class="fw-bold text-uppercase border-bottom border-secondary border-opacity-20 pb-2 mb-4"
+              >
+                Travel Guide
+              </h4>
+              <div class="mb-4">
+                <span class="text-white-50 text-uppercase small tracking-wider"
+                  ><i class="bi bi-calendar-check text-saffron me-2"></i>Best Time to Visit</span
+                >
+                <p class="fw-bold mt-1 mb-0">{{ destination.bestTime }}</p>
+              </div>
+              <div class="mb-4">
+                <span class="text-white-50 text-uppercase small tracking-wider"
+                  ><i class="bi bi-thermometer-half text-saffron me-2"></i>Average Temp</span
+                >
+                <p class="fw-bold mt-1 mb-0">{{ destination.temperature }}</p>
+              </div>
+              <div class="mb-4">
+                <span class="text-white-50 text-uppercase small tracking-wider"
+                  ><i class="bi bi-activity text-saffron me-2"></i>Altitude Profile</span
+                >
+                <p class="fw-bold mt-1 mb-0">High Altitude (Above 10,000 ft)</p>
+              </div>
+              <div>
+                <span class="text-white-50 text-uppercase small tracking-wider"
+                  ><i class="bi bi-heart-pulse text-saffron me-2"></i>AMS Risk</span
+                >
+                <p class="fw-bold mt-1 mb-0">High - Acclimatization Required</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Destination Packages -->
+    <section class="dest-packages py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-saffron text-uppercase tracking-wider fw-bold small"
+            >Our Expeditions</span
+          >
+          <h2 class="section-title display-6 fw-extrabold text-charcoal mt-1 mb-3">
+            {{ destination.name }} Tour Packages
+          </h2>
+          <div class="title-underline mx-auto"></div>
+        </div>
+        @if (packages.length > 0) {
+          <div class="row g-4">
+            @for (pkg of packages; track pkg) {
+              <div class="col-lg-4 col-md-6">
+                <div
+                  class="package-card border-0 shadow-sm bg-white overflow-hidden d-flex flex-column h-100"
+                >
+                  <div class="card-img-wrapper position-relative">
+                    <img
+                      [src]="pkg.image"
+                      [alt]="pkg.title"
+                      class="w-100 package-img"
+                      loading="lazy"
+                    />
+                    <div class="package-tag text-uppercase fw-bold">{{ pkg.category }}</div>
+                    <div class="package-price">
+                      {{ pkg.price | currency: 'INR' : 'symbol' : '1.0-0' }}
+                    </div>
+                  </div>
+                  <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                    <div>
+                      <div class="d-flex justify-content-between text-muted small mb-2">
+                        <span><i class="bi bi-clock me-1 text-saffron"></i>{{ pkg.duration }}</span>
+                        <span
+                          ><i class="bi bi-bar-chart me-1 text-saffron"></i
+                          >{{ pkg.difficulty }}</span
+                        >
+                      </div>
+                      <h4 class="card-title fw-bold text-charcoal mb-2 fs-5">{{ pkg.title }}</h4>
+                      <p class="text-muted small mb-4 line-clamp-3">{{ pkg.description }}</p>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto"
+                    >
+                      <span class="small text-muted"
+                        ><i class="bi bi-geo-alt-fill text-saffron me-1"></i
+                        >{{ pkg.location }}</span
+                      >
+                      <a
+                        [routerLink]="['/packages', pkg.slug]"
+                        class="btn btn-link text-saffron p-0 text-decoration-none fw-bold text-uppercase small"
+                        >Details <i class="bi bi-arrow-right ms-1"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="bg-white p-5 text-center shadow-sm border py-5">
+            <p class="text-muted mb-0">
+              No active packages for this destination. Please contact us for custom bookings.
+            </p>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+}

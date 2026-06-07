@@ -1,0 +1,44 @@
+.dashboard-section {
+  min-height: calc(100vh - 350px);
+}
+
+.stat-card {
+  border-top: 3px solid var(--color-dark-blue) !important;
+  
+  &.border-top-saffron {
+    border-top-color: var(--color-saffron) !important;
+  }
+
+  &.border-top-success {
+    border-top-color: #2e7d32 !important;
+  }
+}
+
+.table {
+  font-family: 'Inter', sans-serif;
+  
+  thead th {
+    background-color: #fafbfc;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+.extra-small {
+  font-size: 0.72rem;
+}
+
+.focus-none {
+  &:focus {
+    box-shadow: none;
+    border-color: var(--color-saffron);
+  }
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}

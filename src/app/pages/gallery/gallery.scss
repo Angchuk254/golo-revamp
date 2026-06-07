@@ -1,0 +1,107 @@
+.gallery-header {
+  background-image: url('/extra/ladakh-pangong.jpeg');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+
+  .header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 19, 43, 0.85);
+    z-index: 1;
+  }
+}
+
+// Category filter button active states
+.active-cat {
+  background-color: var(--color-dark-blue) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-dark-blue) !important;
+}
+
+// Image Card
+.gallery-card {
+  height: 300px;
+  cursor: pointer;
+
+  .gallery-img {
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 19, 43, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 5;
+  }
+
+  &:hover {
+    .gallery-img {
+      transform: scale(1.08);
+    }
+    .gallery-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .extra-small-tag {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+}
+
+// Lightbox Modal
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+
+  .lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2rem;
+    z-index: 2010;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-saffron) !important;
+    }
+  }
+
+  .lightbox-content {
+    max-width: 85%;
+    max-height: 80vh;
+    cursor: default;
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-caption {
+      background-color: #070d17;
+    }
+  }
+}

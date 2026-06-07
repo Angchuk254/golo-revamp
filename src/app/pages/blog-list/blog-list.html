@@ -1,0 +1,81 @@
+<app-breadcrumbs currentSection="Travel Blog"></app-breadcrumbs>
+
+<!-- Banner Header -->
+<section class="blog-header py-5 bg-dark-blue text-white text-center position-relative">
+  <div class="header-overlay"></div>
+  <div class="container position-relative z-3" style="color: #fff">
+    <h1 class="display-5 fw-extrabold text-uppercase mb-2 text-white">
+      Mountain Insights & Stories
+    </h1>
+    <p class="lead text-white-50 mb-0">
+      Himalayan travel guides, health advisories, and local stories.
+    </p>
+  </div>
+</section>
+
+<!-- Content Grid -->
+<section class="blog-content py-5 bg-light-gray">
+  <div class="container">
+    <!-- Category Filter Tabs -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+      @for (cat of categories; track cat) {
+        <button
+          (click)="filterByCategory(cat)"
+          [class.active-cat-btn]="selectedCategory === cat"
+          class="btn btn-outline-dark btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider cat-btn"
+        >
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Blogs Grid -->
+    @if (filteredBlogs.length > 0) {
+      <div class="row g-4">
+        @for (item of filteredBlogs; track item) {
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="blog-card border-0 shadow-sm bg-white overflow-hidden d-flex flex-column h-100"
+            >
+              <div class="blog-img-wrapper position-relative">
+                <img [src]="item.image" [alt]="item.title" class="w-100 blog-img" loading="lazy" />
+                <div class="blog-cat text-uppercase fw-semibold">{{ item.category }}</div>
+              </div>
+              <div class="blog-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                <div>
+                  <div class="text-muted small mb-2">
+                    <i class="bi bi-calendar3 me-2 text-saffron"></i>{{ item.date }}
+                  </div>
+                  <h4 class="card-title fw-bold text-charcoal fs-5 mb-2">{{ item.title }}</h4>
+                  <p class="text-muted small line-clamp-3 mb-4">{{ item.snippet }}</p>
+                </div>
+                <div
+                  class="pt-3 border-top d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="small text-muted"
+                    ><i class="bi bi-person-fill text-saffron me-1"></i>By {{ item.author }}</span
+                  >
+                  <a
+                    [routerLink]="['/blog', item.slug]"
+                    class="text-saffron fw-bold text-decoration-none text-uppercase small"
+                    >Read Article <i class="bi bi-arrow-right ms-1"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="bg-white p-5 text-center shadow-sm border py-5">
+        <div class="text-muted fs-1 mb-3"><i class="bi bi-journal-x"></i></div>
+        <h4 class="fw-bold text-charcoal mb-2">No Articles Found</h4>
+        <p class="text-muted mb-0">
+          We haven't posted any articles in this category yet. Check back soon!
+        </p>
+      </div>
+    }
+
+    <!-- No Blogs Fallback -->
+  </div>
+</section>

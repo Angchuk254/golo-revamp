@@ -1,0 +1,114 @@
+<app-breadcrumbs currentSection="Photo Gallery"></app-breadcrumbs>
+
+<!-- Banner Header -->
+<section class="gallery-header py-5 bg-dark-blue text-white text-center position-relative">
+  <div class="header-overlay"></div>
+  <div class="container position-relative z-3">
+    <h1 class="display-5 fw-extrabold text-uppercase mb-2 text-white" style="color: #fff">
+      Himalayan Photo Gallery
+    </h1>
+    <p class="lead text-white-50 mb-0">Visual glimpses of mountains, culture, and adventure.</p>
+  </div>
+</section>
+
+<!-- Content Grid -->
+<section class="gallery-content py-5 bg-light-gray">
+  <div class="container">
+    <!-- Category Filters -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+      <button
+        (click)="filterCategory('all')"
+        [class.active-cat]="selectedCategory === 'all'"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider"
+      >
+        All Images
+      </button>
+      <button
+        (click)="filterCategory('ladakh')"
+        [class.active-cat]="selectedCategory === 'ladakh'"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider"
+      >
+        Ladakh
+      </button>
+      <button
+        (click)="filterCategory('spiti')"
+        [class.active-cat]="selectedCategory === 'spiti'"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider"
+      >
+        Spiti Valley
+      </button>
+      <button
+        (click)="filterCategory('kashmir')"
+        [class.active-cat]="selectedCategory === 'kashmir'"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider"
+      >
+        Kashmir
+      </button>
+      <button
+        (click)="filterCategory('culture')"
+        [class.active-cat]="selectedCategory === 'culture'"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider"
+      >
+        Culture
+      </button>
+      <button
+        (click)="filterCategory('adventure')"
+        [class.active-cat]="selectedCategory === 'adventure'"
+        class="btn btn-outline-dark btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider"
+      >
+        Adventure
+      </button>
+    </div>
+
+    <!-- Images Grid -->
+    <div class="row g-4">
+      @for (item of filteredItems; track item) {
+        <div class="col-lg-4 col-md-6 col-12">
+          <div
+            class="gallery-card position-relative overflow-hidden shadow-sm"
+            (click)="openLightbox(item)"
+          >
+            <img
+              [src]="item.url"
+              [alt]="item.title"
+              class="w-100 h-100 object-fit-cover gallery-img"
+              loading="lazy"
+            />
+            <div
+              class="gallery-overlay d-flex flex-column justify-content-center align-items-center text-center p-3"
+            >
+              <span class="fs-3 text-white mb-2"><i class="bi bi-zoom-in"></i></span>
+              <h5 class="text-white fw-bold mb-0 text-uppercase tracking-wider small">
+                {{ item.title }}
+              </h5>
+              <span class="text-saffron text-uppercase fw-semibold extra-small-tag mt-1">{{
+                item.category
+              }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+@if (activeLightboxItem) {
+  <div class="lightbox-modal" (click)="closeLightbox()">
+    <button class="lightbox-close border-0 bg-transparent text-white" (click)="closeLightbox()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <div
+      class="lightbox-content bg-dark p-2 border border-secondary border-opacity-20"
+      (click)="$event.stopPropagation()"
+    >
+      <img [src]="activeLightboxItem.url" [alt]="activeLightboxItem.title" class="lightbox-img" />
+      <div class="lightbox-caption p-3 bg-dark-deep text-white">
+        <h6 class="fw-bold mb-1 text-uppercase tracking-wider">{{ activeLightboxItem.title }}</h6>
+        <span class="text-saffron small text-uppercase fw-semibold"
+          >Destination: {{ activeLightboxItem.category }}</span
+        >
+      </div>
+    </div>
+  </div>
+}

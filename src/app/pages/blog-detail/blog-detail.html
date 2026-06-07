@@ -1,0 +1,114 @@
+@if (blog) {
+  <div>
+    <app-breadcrumbs
+      [currentSection]="blog.title"
+      [parentSection]="{ name: 'Travel Blog', link: '/blog' }"
+    >
+    </app-breadcrumbs>
+    <!-- Blog Article Layout -->
+    <section class="blog-detail-section py-5 bg-light-gray">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Left Side: Article Content (Col 8) -->
+          <div class="col-lg-8">
+            <article
+              class="article-container bg-white p-4 p-md-5 shadow-sm border border-light-subtle"
+            >
+              <!-- Category Tag -->
+              <span class="badge bg-saffron text-uppercase btn-sharp px-3 py-2 mb-3">{{
+                blog.category
+              }}</span>
+              <!-- Title -->
+              <h1 class="article-title fw-bold text-charcoal mb-3 display-6">{{ blog.title }}</h1>
+              <!-- Metadata Row -->
+              <div
+                class="article-meta d-flex flex-wrap gap-3 text-muted small pb-4 border-bottom mb-4"
+              >
+                <span><i class="bi bi-calendar3 text-saffron me-1"></i>{{ blog.date }}</span>
+                <span><i class="bi bi-person-fill text-saffron me-1"></i>By {{ blog.author }}</span>
+                <span><i class="bi bi-stopwatch text-saffron me-1"></i>{{ blog.readTime }}</span>
+              </div>
+              <!-- Featured Image -->
+              <div class="article-img-wrapper mb-4">
+                <img [src]="blog.image" [alt]="blog.title" class="w-100 article-main-img" />
+              </div>
+              <!-- Article HTML Content -->
+              <div class="article-body text-muted leading-relaxed" [innerHTML]="blog.content"></div>
+              <!-- Tags List -->
+              <div class="article-tags pt-4 border-top mt-5">
+                <span class="small fw-bold text-charcoal text-uppercase me-2"
+                  ><i class="bi bi-tags-fill text-saffron me-1"></i>Tags:</span
+                >
+                <div class="d-inline-flex flex-wrap gap-2">
+                  @for (tag of blog.tags; track tag) {
+                    <span class="badge bg-light text-charcoal border btn-sharp px-2 py-1 small">
+                      #{{ tag }}
+                    </span>
+                  }
+                </div>
+              </div>
+            </article>
+          </div>
+          <!-- Right Side: Sidebar (Col 4) -->
+          <div class="col-lg-4">
+            <!-- Recommended Packages -->
+            @if (recommendedPackages.length > 0) {
+              <div class="sidebar-widget p-4 bg-white border border-light-subtle shadow-sm mb-4">
+                <h5 class="fw-bold text-charcoal border-bottom pb-2 mb-3 text-uppercase">
+                  <i class="bi bi-compass-fill text-saffron me-2"></i>Related Tours
+                </h5>
+                <div class="d-flex flex-column gap-3">
+                  @for (pkg of recommendedPackages; track pkg) {
+                    <div class="recommended-pkg border p-3 position-relative">
+                      <div class="recommended-pkg-img mb-2 overflow-hidden" style="height: 140px">
+                        <img
+                          [src]="pkg.image"
+                          [alt]="pkg.title"
+                          class="w-100 h-100 object-fit-cover"
+                        />
+                      </div>
+                      <h6 class="fw-bold text-charcoal mb-1">{{ pkg.title }}</h6>
+                      <div class="d-flex justify-content-between text-muted small mb-2">
+                        <span>{{ pkg.duration }}</span>
+                        <span class="fw-bold text-saffron">{{
+                          pkg.price | currency: 'INR' : 'symbol' : '1.0-0'
+                        }}</span>
+                      </div>
+                      <a
+                        [routerLink]="['/packages', pkg.slug]"
+                        class="btn btn-primary btn-sharp btn-sm w-100 text-uppercase py-2 fw-semibold"
+                        >View Details</a
+                      >
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+            <!-- Recent Articles -->
+            <div class="sidebar-widget p-4 bg-white border border-light-subtle shadow-sm">
+              <h5 class="fw-bold text-charcoal border-bottom pb-2 mb-3 text-uppercase">
+                <i class="bi bi-journal-text text-saffron me-2"></i>Recent Posts
+              </h5>
+              <div class="d-flex flex-column gap-3">
+                @for (item of recentBlogs; track item) {
+                  <div
+                    class="recent-post-link pb-3 border-bottom border-light-subtle last-no-border"
+                  >
+                    <span class="text-muted small d-block mb-1"
+                      ><i class="bi bi-calendar3 text-saffron me-1"></i>{{ item.date }}</span
+                    >
+                    <a
+                      [routerLink]="['/blog', item.slug]"
+                      class="fw-semibold text-charcoal text-decoration-none hover-saffron-link small"
+                      >{{ item.title }}</a
+                    >
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+}

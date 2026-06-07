@@ -1,0 +1,157 @@
+<app-breadcrumbs currentSection="About Us"></app-breadcrumbs>
+
+<!-- Banner Header -->
+<section class="about-header py-5 bg-dark-blue text-white text-center position-relative">
+  <div class="header-overlay"></div>
+  <div class="container position-relative z-3">
+    <h1 class="display-5 fw-extrabold text-uppercase mb-2 text-white">ABOUT GOLO HOLIDAYS</h1>
+    <p class="lead text-white-50 mb-0">
+      Rooted in Leh, guiding the world through the highest passes.
+    </p>
+  </div>
+</section>
+
+<!-- Narrative History -->
+<section class="about-intro py-5 bg-white">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <span class="text-saffron text-uppercase tracking-wider fw-bold small">Our Roots</span>
+        <h2 class="fw-bold text-charcoal mb-4 display-6">NATIVE MOUNTAIN GUIDES SINCE 2018</h2>
+        <p class="text-muted leading-relaxed">
+          Golo Holidays started as a cooperative of native Ladakhi guides in Leh who wanted to offer
+          structured, professional, and safe travel support for visitors exploring the delicate
+          environment of Ladakh.
+        </p>
+        <p class="text-muted leading-relaxed">
+          Unlike online booking aggregators, we own our fleet of vehicles, manage direct custom
+          agreements with verified local homestays, and train all our guides in high-altitude
+          safety. Over the years, we expanded our operations to the cold deserts of Spiti Valley and
+          the green alpine meadows of Kashmir, keeping our local-first core philosophy intact.
+        </p>
+        <div class="pt-3">
+          <a
+            routerLink="/contact"
+            class="btn btn-primary btn-sharp text-uppercase py-2.5 px-4 fw-bold"
+            >Plan with Locals</a
+          >
+        </div>
+      </div>
+
+      <!-- Graphic Banner side -->
+      <div class="col-lg-6">
+        <div
+          class="position-relative border border-5 border-white shadow-lg overflow-hidden"
+          style="height: 380px"
+        >
+          <img
+            src="/extra/ladakh-team.jpeg"
+            class="w-100 h-100 object-fit-cover"
+            alt="Ladakh Mountains View"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 bg-dark-blue text-white p-4 btn-sharp m-3 shadow"
+          >
+            <h4 class="fw-bold mb-1">100%</h4>
+            <p class="mb-0 text-white-50 small text-uppercase">Local Ownership</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Values -->
+<section class="about-values py-5 bg-light-gray">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="text-saffron text-uppercase tracking-wider fw-bold small">Our Foundation</span>
+      <h2 class="section-title display-6 fw-extrabold text-charcoal mt-1 mb-3">
+        CORE TOURISM VALUES
+      </h2>
+      <div class="title-underline mx-auto"></div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Value 1 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="value-card p-4 bg-white shadow-sm border border-light-subtle h-100">
+          <div class="value-icon mb-3 fs-2 text-saffron">
+            <i class="bi bi-shield-heart-fill"></i>
+          </div>
+          <h5 class="fw-bold mb-2">Acclimatization First</h5>
+          <p class="text-muted small mb-0">
+            We never compromise on safety. Our schedules are customized to give travelers mandatory
+            time to adapt to thin air.
+          </p>
+        </div>
+      </div>
+      <!-- Value 2 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="value-card p-4 bg-white shadow-sm border border-light-subtle h-100">
+          <div class="value-icon mb-3 fs-2 text-saffron"><i class="bi bi-people-fill"></i></div>
+          <h5 class="fw-bold mb-2">Native Expertise</h5>
+          <p class="text-muted small mb-0">
+            Our drivers and guides belong to the terrain they drive, ensuring offbeat knowledge and
+            quick help in emergencies.
+          </p>
+        </div>
+      </div>
+      <!-- Value 3 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="value-card p-4 bg-white shadow-sm border border-light-subtle h-100">
+          <div class="value-icon mb-3 fs-2 text-saffron"><i class="bi bi-gem"></i></div>
+          <h5 class="fw-bold mb-2">Premium Comfort</h5>
+          <p class="text-muted small mb-0">
+            We select high-end Swiss camps and clean boutique hotels with heaters, running water,
+            and mountain view windows.
+          </p>
+        </div>
+      </div>
+      <!-- Value 4 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="value-card p-4 bg-white shadow-sm border border-light-subtle h-100">
+          <div class="value-icon mb-3 fs-2 text-saffron"><i class="bi bi-tree-fill"></i></div>
+          <h5 class="fw-bold mb-2">Zero Footprint</h5>
+          <p class="text-muted small mb-0">
+            We support community homestays, reduce plastic use during campstays, and run environment
+            cleanup drives.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founders Grid -->
+<section class="about-team py-5 bg-white">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="text-saffron text-uppercase tracking-wider fw-bold small">Our Team</span>
+      <h2 class="section-title display-6 fw-extrabold text-charcoal mt-1 mb-3">
+        MEET THE MOUNTAIN LEADERS
+      </h2>
+      <div class="title-underline mx-auto"></div>
+    </div>
+
+    <div class="row g-4">
+      @for (member of team; track member) {
+        <div class="col-md-4">
+          <div class="team-card border shadow-sm bg-white overflow-hidden h-100">
+            <div class="team-img-wrapper" style="height: 300px; overflow: hidden">
+              <img [src]="member.image" [alt]="member.name" class="w-100 h-100 object-fit-cover" />
+            </div>
+            <div class="p-4">
+              <h5 class="fw-bold text-charcoal mb-1">{{ member.name }}</h5>
+              <span
+                class="text-saffron small d-block mb-3 fw-medium text-uppercase tracking-wider"
+                >{{ member.role }}</span
+              >
+              <p class="text-muted small mb-0">{{ member.bio }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,108 @@
+<app-breadcrumbs [currentSection]="service ? service.title : 'Service Detail'"></app-breadcrumbs>
+
+<!-- Banner Header -->
+<section class="service-header py-5 bg-dark-blue text-white text-center position-relative">
+  <div class="header-overlay"></div>
+  <div class="container position-relative z-3">
+    @if (service) {
+      <h1 class="display-6 fw-extrabold text-uppercase mb-2 text-white">{{ service.title }}</h1>
+    }
+    @if (service) {
+      <p class="lead text-white-50 mb-0">Golo Holidays Local Information Guide</p>
+    }
+  </div>
+</section>
+
+<!-- Content Section -->
+@if (service) {
+  <section class="service-content py-5 bg-light-gray">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <!-- Intro Card -->
+          <div class="bg-white p-4 p-md-5 shadow-sm border border-light-subtle mb-5">
+            <p class="lead text-charcoal mb-0 fw-semibold" style="line-height: 1.6">
+              {{ service.intro }}
+            </p>
+          </div>
+          <!-- Dynamic Sections -->
+          @for (sec of service.sections; track sec; let i = $index) {
+            <div class="bg-white shadow-sm border border-light-subtle overflow-hidden mb-5">
+              <div class="row g-0 align-items-stretch">
+                <!-- Side Image -->
+                @if (sec.image) {
+                  <div class="col-md-5" [class.order-md-2]="i % 2 !== 0">
+                    <div class="h-100 min-h-300">
+                      <img
+                        [src]="sec.image"
+                        [alt]="sec.title"
+                        class="w-100 h-100 object-fit-cover"
+                        style="min-height: 320px"
+                      />
+                    </div>
+                  </div>
+                }
+                <!-- Content Area -->
+                <div
+                  [class]="sec.image ? 'col-md-7' : 'col-12'"
+                  [class.order-md-1]="sec.image && i % 2 !== 0"
+                  class="d-flex flex-column justify-content-center p-4 p-md-5"
+                >
+                  <h3 class="fw-bold text-charcoal mb-3">{{ sec.title }}</h3>
+                  <p class="text-muted mb-4" style="line-height: 1.6">{{ sec.text }}</p>
+                  <!-- Optional List -->
+                  @if (sec.bulletPoints) {
+                    <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                      @for (point of sec.bulletPoints; track point) {
+                        <li class="d-flex align-items-start text-muted">
+                          <i class="bi bi-patch-check-fill text-saffron me-3 mt-1 fs-5"></i>
+                          <span class="small-text">{{ point }}</span>
+                        </li>
+                      }
+                    </ul>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+          <!-- Local Expert CTA -->
+          <div
+            class="bg-dark-blue text-white p-4 p-md-5 shadow text-center border-top border-5 border-saffron"
+          >
+            <h3 class="fw-bold text-white mb-2">Need a Custom Himalayan Trip?</h3>
+            <p class="text-white-50 mb-4 max-w-2xl mx-auto">
+              Get in touch with our native guides to structure your dream monasteries, trekking,
+              taxi or camping package.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+              <a
+                routerLink="/contact"
+                class="btn btn-primary btn-sharp text-uppercase py-2.5 px-4 fw-bold"
+                >Plan Your Trip</a
+              >
+              <a
+                href="https://api.whatsapp.com/send/?phone=917051415184&text&type=phone_number&app_absent=0"
+                target="_blank"
+                class="btn btn-outline-light btn-sharp text-uppercase py-2.5 px-4 fw-bold"
+                ><i class="bi bi-whatsapp me-2"></i>WhatsApp Us</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <div class="container py-5 text-center">
+    <div class="text-muted fs-1 mb-3"><i class="bi bi-exclamation-triangle"></i></div>
+    <h2 class="fw-bold text-charcoal mb-2">Service Guide Not Found</h2>
+    <p class="text-muted mb-4">
+      The page you are looking for does not exist or has been relocated.
+    </p>
+    <a routerLink="/" class="btn btn-primary btn-sharp text-uppercase py-2.5 px-4 fw-bold"
+      >Back to Home</a
+    >
+  </div>
+}
+
+<!-- Not Found Template -->
