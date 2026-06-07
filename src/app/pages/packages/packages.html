@@ -1,0 +1,196 @@
+<app-breadcrumbs currentSection="Tour Packages"></app-breadcrumbs>
+
+<!-- Banner Header -->
+<section class="packages-header py-5 bg-dark-blue text-white text-center position-relative">
+  <div class="header-overlay"></div>
+  <div class="container position-relative z-3">
+    <h1 class="display-5 fw-extrabold text-uppercase mb-2 text-white">Himalayan Tour Packages</h1>
+    <p class="lead text-white-50 mb-0">
+      Browse through our carefully curated itineraries for Ladakh, Spiti, and Kashmir.
+    </p>
+  </div>
+</section>
+
+<!-- Content Section -->
+<section class="packages-content py-5 bg-light-gray">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Filters Sidebar (Col 3) -->
+      <div class="col-lg-3">
+        <div class="filters-sidebar p-4 bg-white shadow-sm border border-light-subtle">
+          <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+            <h5 class="fw-bold text-charcoal mb-0">
+              <i class="bi bi-funnel-fill text-saffron me-2"></i>Filters
+            </h5>
+            <button
+              (click)="resetFilters()"
+              class="btn btn-link text-decoration-none text-muted small p-0 fw-semibold text-uppercase"
+            >
+              Reset All
+            </button>
+          </div>
+
+          <!-- Destination Filter -->
+          <div class="mb-4">
+            <label class="form-label text-uppercase small fw-bold text-charcoal tracking-wider mb-2"
+              >Destination</label
+            >
+            <select
+              [(ngModel)]="selectedCategory"
+              (change)="applyFilters()"
+              class="form-select bg-light border-secondary-subtle py-2 btn-sharp focus-none"
+            >
+              <option value="">All Destinations</option>
+              <option value="ladakh">Ladakh</option>
+              <option value="spiti">Spiti Valley</option>
+              <option value="kashmir">Kashmir</option>
+            </select>
+          </div>
+
+          <!-- Difficulty Filter -->
+          <div class="mb-4">
+            <label class="form-label text-uppercase small fw-bold text-charcoal tracking-wider mb-2"
+              >Difficulty</label
+            >
+            <select
+              [(ngModel)]="selectedDifficulty"
+              (change)="applyFilters()"
+              class="form-select bg-light border-secondary-subtle py-2 btn-sharp focus-none"
+            >
+              <option value="">Any Difficulty</option>
+              <option value="Easy">Easy</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Challenging">Challenging</option>
+            </select>
+          </div>
+
+          <!-- Duration Filter -->
+          <div class="mb-4">
+            <label class="form-label text-uppercase small fw-bold text-charcoal tracking-wider mb-2"
+              >Duration</label
+            >
+            <select
+              [(ngModel)]="selectedDuration"
+              (change)="applyFilters()"
+              class="form-select bg-light border-secondary-subtle py-2 btn-sharp focus-none"
+            >
+              <option value="">Any Duration</option>
+              <option value="short">1 - 6 Days (Short)</option>
+              <option value="medium">7 - 9 Days (Medium)</option>
+              <option value="long">10+ Days (Long)</option>
+            </select>
+          </div>
+
+          <!-- Budget Filter -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label
+                class="form-label text-uppercase small fw-bold text-charcoal tracking-wider mb-0"
+                >Max Budget</label
+              >
+              <span class="fw-bold text-saffron">{{
+                priceRange | currency: 'INR' : 'symbol' : '1.0-0'
+              }}</span>
+            </div>
+            <input
+              type="range"
+              class="form-range"
+              min="20000"
+              max="60000"
+              step="1000"
+              [(ngModel)]="priceRange"
+              (input)="applyFilters()"
+            />
+            <div class="d-flex justify-content-between text-muted small mt-1">
+              <span>₹20,000</span>
+              <span>₹60,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Packages Grid (Col 9) -->
+      <div class="col-lg-9">
+        <!-- Results Counter -->
+        <div
+          class="d-flex justify-content-between align-items-center mb-4 bg-white p-3 shadow-sm border border-light-subtle"
+        >
+          <p class="mb-0 text-muted">
+            Showing <strong>{{ filteredPackages.length }}</strong> packages
+          </p>
+          <span class="badge bg-dark btn-sharp px-3 py-2 text-uppercase tracking-wider"
+            >Golo Selected</span
+          >
+        </div>
+
+        <!-- Packages List -->
+        @if (filteredPackages.length > 0) {
+          <div class="row g-4">
+            @for (pkg of filteredPackages; track pkg) {
+              <div class="col-md-6">
+                <div
+                  class="package-card border-0 shadow-sm bg-white overflow-hidden d-flex flex-column h-100"
+                >
+                  <div class="card-img-wrapper position-relative">
+                    <img
+                      [src]="pkg.image"
+                      [alt]="pkg.title"
+                      class="w-100 package-img"
+                      loading="lazy"
+                    />
+                    <div class="package-tag text-uppercase fw-bold">{{ pkg.category }}</div>
+                    <div class="package-price">
+                      {{ pkg.price | currency: 'INR' : 'symbol' : '1.0-0' }}
+                    </div>
+                  </div>
+                  <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                    <div>
+                      <div class="d-flex justify-content-between text-muted small mb-2">
+                        <span><i class="bi bi-clock me-1 text-saffron"></i>{{ pkg.duration }}</span>
+                        <span
+                          ><i class="bi bi-bar-chart me-1 text-saffron"></i
+                          >{{ pkg.difficulty }}</span
+                        >
+                      </div>
+                      <h4 class="card-title fw-bold text-charcoal mb-2 fs-5">{{ pkg.title }}</h4>
+                      <p class="text-muted small mb-4 line-clamp-3">{{ pkg.description }}</p>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto"
+                    >
+                      <span class="small text-muted"
+                        ><i class="bi bi-geo-alt-fill text-saffron me-1"></i
+                        >{{ pkg.location }}</span
+                      >
+                      <a
+                        [routerLink]="['/packages', pkg.slug]"
+                        class="btn btn-link text-saffron p-0 text-decoration-none fw-bold text-uppercase small"
+                        >Details <i class="bi bi-arrow-right ms-1"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="bg-white p-5 text-center shadow-sm border border-light-subtle py-5">
+            <div class="text-muted fs-1 mb-3"><i class="bi bi-search"></i></div>
+            <h4 class="fw-bold text-charcoal mb-2">No Packages Found</h4>
+            <p class="text-muted mb-4">
+              Try adjusting your filters or search options to find suitable packages.
+            </p>
+            <button
+              (click)="resetFilters()"
+              class="btn btn-primary btn-sharp text-uppercase px-4 py-2 fw-semibold"
+            >
+              View All Packages
+            </button>
+          </div>
+        }
+
+        <!-- No Results Template -->
+      </div>
+    </div>
+  </div>
+</section>

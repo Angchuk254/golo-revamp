@@ -1,0 +1,211 @@
+.bg-dark-deep {
+  background-color: #070d17 !important;
+}
+
+.badge.bg-saffron {
+  background-color: var(--color-saffron) !important;
+  color: var(--color-white) !important;
+}
+
+// Gallery
+.main-image-wrapper {
+  height: 480px;
+  overflow: hidden;
+  
+  @media (max-width: 767.98px) {
+    height: 300px;
+  }
+
+  .main-showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.thumb-wrapper {
+  height: 90px;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: all 0.3s ease;
+  overflow: hidden;
+
+  &.active-thumb, &:hover {
+    opacity: 1;
+    border-color: var(--color-saffron) !important;
+  }
+
+  .thumb-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+// Quick Specs
+.quick-specs {
+  border: 1px solid #eef2f5 !important;
+}
+
+// Tabs
+.tabs-nav {
+  border: 1px solid #eef2f5 !important;
+  
+  .tab-btn {
+    background-color: var(--color-white);
+    color: var(--color-charcoal);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--color-saffron);
+      background-color: #fafbfc;
+    }
+
+    &.active-tab {
+      background-color: var(--color-dark-blue);
+      color: var(--color-white);
+      border-bottom: 3px solid var(--color-saffron) !important;
+    }
+  }
+}
+
+// Itinerary Timeline
+.itinerary-timeline {
+  position: relative;
+  padding-left: 20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 45px;
+    width: 2px;
+    background-color: #eef2f5;
+    z-index: 1;
+  }
+
+  .timeline-day {
+    position: relative;
+    z-index: 2;
+
+    .day-number-badge {
+      width: 70px;
+      height: 70px;
+      min-width: 70px;
+      z-index: 5;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .day-content {
+      background-color: #fafbfc;
+      border: 1px solid #eef2f5;
+      padding: 18px 24px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: var(--color-white);
+        border-color: rgba(230, 95, 43, 0.2);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+    }
+  }
+}
+
+// Inclusions/Exclusions Lists
+.inclusions-list, .exclusions-list {
+  li {
+    line-height: 1.5;
+  }
+}
+
+.text-success {
+  color: #2e7d32 !important;
+}
+
+.text-danger {
+  color: #c62828 !important;
+}
+
+// Sticky Sidebar
+.sticky-top-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 90px;
+  z-index: 9;
+  border: 1px solid #eef2f5 !important;
+  border-top: 3px solid var(--color-saffron) !important;
+}
+
+.focus-none {
+  &:focus {
+    box-shadow: none;
+    border-color: var(--color-saffron);
+  }
+}
+
+// Bike pricing table styling
+.bike-pricing-table-wrapper {
+  margin-top: 15px;
+  overflow-x: auto;
+  border: 1px solid #eef2f5;
+
+  .modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    text-align: left;
+
+    thead {
+      background-color: var(--color-dark-blue);
+      color: var(--color-white);
+
+      th {
+        padding: 14px 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--color-saffron);
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #eef2f5;
+        transition: background-color 0.2s ease;
+
+        &:nth-of-type(even) {
+          background-color: #fafbfc;
+        }
+
+        &:hover {
+          background-color: #f1f5f9;
+        }
+
+        td {
+          padding: 14px 16px;
+          color: var(--color-charcoal);
+
+          &:first-child {
+            font-weight: 600;
+            color: var(--color-dark-blue);
+            width: 80px;
+          }
+
+          &:last-child {
+            font-weight: 700;
+            color: var(--color-saffron);
+          }
+        }
+      }
+    }
+  }
+}
+

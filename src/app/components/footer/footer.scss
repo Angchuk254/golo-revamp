@@ -1,0 +1,119 @@
+.footer-section {
+  background-color: var(--color-charcoal);
+  color: var(--color-white);
+  font-family: 'Inter', sans-serif;
+
+  .footer-top {
+    background-color: #0d1624; // Deeper blue-charcoal
+  }
+
+  .logo-brand {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    .logo-accent {
+      color: var(--color-saffron);
+    }
+
+    .logo-text {
+      color: var(--color-white);
+      margin-left: 2px;
+    }
+  }
+
+  .footer-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #fff !important;
+  }
+
+  .footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--color-saffron);
+    }
+  }
+
+  .footer-links {
+    li {
+      a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+
+        &:hover {
+          color: var(--color-saffron);
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+
+  .social-links {
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: var(--color-saffron);
+        color: var(--color-white);
+        border-color: var(--color-saffron);
+      }
+    }
+  }
+
+  .bg-dark-deep {
+    background-color: #070d17;
+  }
+
+  .footer-bottom-links {
+    a {
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--color-saffron) !important;
+      }
+    }
+
+    .admin-login-link {
+      &:hover {
+        color: var(--color-saffron) !important;
+      }
+    }
+  }
+
+  .focus-none {
+    &:focus {
+      box-shadow: none;
+      border-color: var(--color-saffron);
+    }
+  }
+
+  .text-saffron {
+    color: var(--color-saffron);
+  }
+}

@@ -1,0 +1,88 @@
+<header class="main-header" [ngClass]="{ 'header-scrolled': isScrolled || !isHome }">
+  <div class="container-fluid px-3 px-md-5 d-flex align-items-center justify-content-between">
+    
+    <!-- Brand Logo -->
+    <a routerLink="/" class="logo-brand d-flex align-items-center" (click)="closeMenu()">
+      <span class="logo-accent">Golo</span>
+      <span class="logo-text">Holidays</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav d-none d-xl-flex align-items-center">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a>
+      
+      <!-- Destinations Dropdown -->
+      <div class="nav-item-dropdown">
+        <a class="nav-link dropdown-toggle-btn">
+          Destinations <i class="bi bi-chevron-down ms-1"></i>
+        </a>
+        <div class="dropdown-menu-custom">
+          <a routerLink="/destinations/ladakh" routerLinkActive="active" class="dropdown-item-custom">Ladakh</a>
+          <a routerLink="/destinations/spiti" routerLinkActive="active" class="dropdown-item-custom">Spiti Valley</a>
+          <a routerLink="/destinations/kashmir" routerLinkActive="active" class="dropdown-item-custom">Kashmir</a>
+        </div>
+      </div>
+
+      <a routerLink="/packages" routerLinkActive="active" class="nav-link">Packages</a>
+      <a routerLink="/gallery" routerLinkActive="active" class="nav-link">Gallery</a>
+      <a routerLink="/blog" routerLinkActive="active" class="nav-link">Blog</a>
+      <a routerLink="/faq" routerLinkActive="active" class="nav-link">FAQ</a>
+      <a routerLink="/about" routerLinkActive="active" class="nav-link">About Us</a>
+      <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- Header CTA -->
+    <div class="d-none d-xl-block">
+      <a routerLink="/packages" class="btn btn-primary btn-sharp text-uppercase py-2 px-4 fw-semibold tracking-wider">Book A Tour</a>
+    </div>
+
+    <!-- Hamburger Menu Toggle Button -->
+    <button class="hamburger-btn d-xl-none" (click)="toggleMenu()" aria-label="Toggle navigation" [ngClass]="{ 'active': isMenuOpen }">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-nav-overlay" [ngClass]="{ 'show': isMenuOpen }" (click)="closeMenu()"></div>
+
+<div class="mobile-nav-drawer" [ngClass]="{ 'show': isMenuOpen }">
+  <div class="drawer-header d-flex align-items-center justify-content-between p-4">
+    <a routerLink="/" class="logo-brand d-flex align-items-center" (click)="closeMenu()">
+      <span class="logo-accent">Golo</span>
+      <span class="logo-text">Holidays</span>
+    </a>
+    <button class="btn-close-custom" (click)="closeMenu()"><i class="bi bi-x-lg"></i></button>
+  </div>
+
+  <div class="drawer-body p-4">
+    <div class="mobile-menu d-flex flex-column gap-3">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-link" (click)="closeMenu()">Home</a>
+      
+      <!-- Expandable Destinations Section -->
+      <div class="mobile-dropdown-section">
+        <span class="mobile-dropdown-title d-flex justify-content-between align-items-center">
+          Destinations
+        </span>
+        <div class="mobile-dropdown-links ms-3 d-flex flex-column gap-2 mt-2 border-start ps-3">
+          <a routerLink="/destinations/ladakh" routerLinkActive="active" class="mobile-nav-link sub-link" (click)="closeMenu()">Ladakh</a>
+          <a routerLink="/destinations/spiti" routerLinkActive="active" class="mobile-nav-link sub-link" (click)="closeMenu()">Spiti Valley</a>
+          <a routerLink="/destinations/kashmir" routerLinkActive="active" class="mobile-nav-link sub-link" (click)="closeMenu()">Kashmir</a>
+        </div>
+      </div>
+
+      <a routerLink="/packages" routerLinkActive="active" class="mobile-nav-link" (click)="closeMenu()">Packages</a>
+      <a routerLink="/gallery" routerLinkActive="active" class="mobile-nav-link" (click)="closeMenu()">Gallery</a>
+      <a routerLink="/blog" routerLinkActive="active" class="mobile-nav-link" (click)="closeMenu()">Blog</a>
+      <a routerLink="/faq" routerLinkActive="active" class="mobile-nav-link" (click)="closeMenu()">FAQ</a>
+      <a routerLink="/about" routerLinkActive="active" class="mobile-nav-link" (click)="closeMenu()">About Us</a>
+      <a routerLink="/contact" routerLinkActive="active" class="mobile-nav-link" (click)="closeMenu()">Contact</a>
+      
+      <div class="mt-4 pt-3 border-top">
+        <a routerLink="/packages" class="btn btn-primary btn-sharp w-100 text-uppercase py-3 fw-semibold" (click)="closeMenu()">Book A Tour</a>
+      </div>
+    </div>
+  </div>
+</div>

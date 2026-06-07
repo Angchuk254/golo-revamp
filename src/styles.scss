@@ -1,0 +1,168 @@
+/* Import Bootstrap and Icons */
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* Color Variables and Root Setup */
+:root {
+  --color-dark-blue: #0b132b;
+  --color-saffron: #e65f2b;
+  --color-white: #ffffff;
+  --color-charcoal: #1c2541;
+  --color-light-gray: #fafbfc;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-light-gray);
+  color: var(--color-charcoal);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #fff
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-blue);
+  border: 1px solid var(--color-light-gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-saffron);
+}
+
+/* Sharp Edges Global Rule */
+.btn,
+.card,
+.form-control,
+.form-select,
+.badge,
+.dropdown-menu,
+.alert,
+img,
+input,
+select,
+textarea {
+  border-radius: 0px !important;
+}
+
+/* Base Helper styles */
+.bg-dark-blue {
+  background-color: var(--color-dark-blue) !important;
+}
+
+.bg-light-gray {
+  background-color: var(--color-light-gray) !important;
+}
+
+.text-saffron {
+  color: var(--color-saffron) !important;
+}
+
+.text-charcoal {
+  color: var(--color-charcoal) !important;
+}
+
+.btn-primary {
+  background-color: var(--color-saffron) !important;
+  border-color: var(--color-saffron) !important;
+  color: var(--color-white) !important;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--color-dark-blue) !important;
+    border-color: var(--color-dark-blue) !important;
+    color: var(--color-white) !important;
+  }
+}
+
+.btn-outline-dark {
+  border-color: var(--color-dark-blue) !important;
+  color: var(--color-dark-blue) !important;
+
+  &:hover {
+    background-color: var(--color-dark-blue) !important;
+    color: var(--color-white) !important;
+  }
+}
+
+/* General Layout spacing */
+.main-content-area {
+  min-height: 70vh;
+}
+
+/* Title Underlines */
+.title-underline {
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-saffron);
+}
+
+.breadcrumb li a {
+  color: #fff !important;
+}
+
+/* Horizontal Scroll on Mobile with Hidden Scrollbar */
+@media (max-width: 767.98px) {
+  .mobile-horizontal-scroll {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-bottom: 20px !important;
+    /* leaves space for card hover and shadows */
+    margin-left: -15px !important;
+    /* break container bounds for edge-to-edge feel */
+    margin-right: -15px !important;
+    scroll-snap-type: x mandatory;
+
+    &>div,
+    &>[class*="col-"] {
+      flex: 0 0 85% !important;
+      /* show 85% of one card, hinting at next card */
+      max-width: 85% !important;
+      scroll-snap-align: start;
+      margin-right: 8px;
+      /* space between cards */
+    }
+
+    /* Hide scrollbar for Webkit browsers (Chrome, Safari, newer Edge) */
+    &::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none !important;
+    /* IE and Edge */
+    scrollbar-width: none !important;
+    /* Firefox */
+  }
+}

@@ -1,0 +1,105 @@
+.packages-header {
+  background-image: url('/extra/mountain-ladakh.jpeg');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+
+  .header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 19, 43, 0.85);
+    z-index: 1;
+  }
+}
+
+.filters-sidebar {
+  border-top: 3px solid var(--color-saffron) !important;
+}
+
+// Range Slider Accent
+.form-range {
+  &:focus {
+    box-shadow: none;
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(230, 95, 43, 0.25);
+    }
+  }
+
+  &::-webkit-slider-thumb {
+    background-color: var(--color-saffron);
+    &:active {
+      background-color: var(--color-saffron);
+    }
+  }
+
+  &::-moz-range-thumb {
+    background-color: var(--color-saffron);
+  }
+}
+
+// Package Cards styling is reused globally or styled here:
+.package-card {
+  border: 1px solid #eef2f5 !important;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+    border-color: rgba(230, 95, 43, 0.2) !important;
+  }
+
+  .card-img-wrapper {
+    height: 220px;
+    overflow: hidden;
+
+    .package-img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &:hover .package-img {
+    transform: scale(1.05);
+  }
+
+  .package-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--color-dark-blue);
+    color: var(--color-white);
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .package-price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--color-saffron);
+    color: var(--color-white);
+    padding: 8px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 750;
+    font-size: 1.1rem;
+  }
+}
+
+.focus-none {
+  &:focus {
+    box-shadow: none;
+    border-color: var(--color-saffron);
+  }
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}

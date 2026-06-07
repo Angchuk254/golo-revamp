@@ -1,0 +1,100 @@
+<app-breadcrumbs currentSection="Admin Access"></app-breadcrumbs>
+
+<section class="py-5 bg-light-gray login-section d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="login-card p-4 p-md-5 bg-white border border-light-subtle shadow-sm">
+          <div class="text-center mb-4">
+            <h2 class="fw-extrabold text-charcoal mb-1 text-uppercase tracking-wider">
+              ADMIN ACCESS
+            </h2>
+            <div class="title-underline mx-auto"></div>
+            <p class="text-muted small mt-2">Sign in to manage booking inquiries and messages</p>
+          </div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label small fw-bold text-charcoal text-uppercase"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="loginEmail"
+                formControlName="email"
+                class="form-control bg-light border-secondary-subtle btn-sharp focus-none"
+                [class.is-invalid]="
+                  loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+                "
+                placeholder="admin@goloholidays.com"
+              />
+              @if (
+                loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']
+              ) {
+                <div class="invalid-feedback small">Email address is required.</div>
+              }
+              @if (loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']) {
+                <div class="invalid-feedback small">Please enter a valid email address.</div>
+              }
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+              <label
+                for="loginPassword"
+                class="form-label small fw-bold text-charcoal text-uppercase"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="loginPassword"
+                formControlName="password"
+                class="form-control bg-light border-secondary-subtle btn-sharp focus-none"
+                [class.is-invalid]="
+                  loginForm.get('password')?.touched && loginForm.get('password')?.invalid
+                "
+                placeholder="******"
+              />
+              @if (
+                loginForm.get('password')?.touched &&
+                loginForm.get('password')?.errors?.['required']
+              ) {
+                <div class="invalid-feedback small">Password is required.</div>
+              }
+              @if (
+                loginForm.get('password')?.touched &&
+                loginForm.get('password')?.errors?.['minlength']
+              ) {
+                <div class="invalid-feedback small">Password must be at least 6 characters.</div>
+              }
+            </div>
+
+            <!-- Error Notification -->
+            @if (loginError) {
+              <div class="alert alert-danger btn-sharp small py-2 mb-3" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ loginError }}
+              </div>
+            }
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="btn btn-primary w-100 btn-sharp text-uppercase py-3 fw-bold tracking-wider"
+              [disabled]="isSubmitting"
+            >
+              @if (isSubmitting) {
+                <span
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              }
+              Secure Log In
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
